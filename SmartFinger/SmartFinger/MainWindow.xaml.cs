@@ -68,15 +68,15 @@ namespace SmartFinger
                 File.Delete(sFile);
             }
             SerializeHelper.Save<PlateVector>(plateVector, sFile);
-            SetInfo(string.Format("向量已经成功保存到{0}", sFile),false);
+            //SetInfo(string.Format("向量已经成功保存到{0}", sFile),false);
         }
 
-        private void SetInfo(string hint, bool isError = true)
-        {
-            txtInfo.Text = hint;
-            Brush txtBrush = isError ? Brushes.Red : Brushes.Black;
-            txtInfo.Foreground = txtBrush;
-        }
+        //private void SetInfo(string hint, bool isError = true)
+        //{
+        //    txtInfo.Text = hint;
+        //    Brush txtBrush = isError ? Brushes.Red : Brushes.Black;
+        //    txtInfo.Foreground = txtBrush;
+        //}
 
         
 
