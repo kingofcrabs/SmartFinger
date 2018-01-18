@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SmartFinger.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="600" Width="700">
+        Title="MainWindow" Height="600" Width="900">
     <Window.Resources>
         <RoutedUICommand x:Key="SaveDefineVectors" Text="保存向量." />
     </Window.Resources>
@@ -71,9 +71,10 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Name="btnAdd" Content="+" Width="50" Margin="2,2,2,0" Click="btnAddPosition_Click"></Button>
                         <Button Name="btnDelete" Content="-" Width="50" Margin="2,2,2,0" Click="btnDeletePosition_Click"></Button>
-                        <Button Content="移动到" Width="50" Margin="2,2,2,0"></Button>
-                        <Button Content="移动到安全位置" Margin="2,2,2,0"></Button>
-                        <Button Content="移动到结束位" Margin="2,2,2,0"></Button>
+                        <Button Content="移动到" Width="50" Margin="2,2,2,0" Click="Move_Click"></Button>
+                        <Button Content="初始化" Width="50" Margin="2,2,2,0" Click="Init_Click" ></Button>
+                        <Button Name="ClampON" Content="ClampON" Width="80" Margin="2,2,2,0" Click="ClampON_Click" ></Button>
+                        <Button Name="ClampOFF" Content="ClampOFF" Width="80" Margin="2,2,2,0" Click="ClampOFF_Click"></Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                         <Label>器件名：</Label>

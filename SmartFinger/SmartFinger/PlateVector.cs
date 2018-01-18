@@ -20,8 +20,8 @@ namespace SmartFinger
         public PlateVector(string name)
         {
             this.name = name;
-            Position safePosition = new Position("Safe", 100, 100, 100, 0);
-            Position endPosition = new Position("End", 100, 100, 100, 0);
+            Position safePosition = new Position("Safe1", 100, 100, -100, 0);
+            Position endPosition = new Position("End1", 100, 100, -100, 0);
             positions.Add(safePosition);
             positions.Add(endPosition);
         }
@@ -141,19 +141,37 @@ namespace SmartFinger
             
         }
 
+        //public Position GetNextMovePosition()
+        //{
+        //    CurrentPosition
+        //    //foreach (Position nextMovePosition in positions)
+        //    //{
+        //    //    return nextMovePosition;
+        //    //}
+        //    //return positions;
+        //}
+
         internal void AddNewPosition()
         {
             var IDs = positions.Select(x=>x.ID).ToList();
             List<int> vals = new List<int>();
             foreach(var ID in IDs)
             {
-                if( ID == "Safe" || ID == "End")
-                    continue;
-                vals.Add(int.Parse(ID));
+                if (ID.Substring(0,1) == "S")
+                    vals.Add(int.Parse(ID.Substring(4, 1)));
+                else if (ID.Substring(0, 1) == "E")
+                    vals.Add(int.Parse(ID.Substring(3, 1)));
+                //if ( ID == "Safe" || ID == "End")
+                //    continue;
+                //vals.Add(int.Parse(ID));
             }
 
             int nextID = vals.Count > 0 ? vals.Max() +1 : 1;
-            positions.Add(new Position(nextID.ToString(), 0, 0, 0,0));
+            string id = string.Format("Safe"+nextID.ToString());
+            //positions.Add(new Position(nextID.ToString(), 0, 0, 0,0));
+            positions.Add(new Position(id, 0, 0, 0, 0));
+            id = string.Format("End" + nextID.ToString());
+            positions.Add(new Position(id, 0, 0, 0, 0));
         }
     }
 }

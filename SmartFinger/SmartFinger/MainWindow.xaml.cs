@@ -23,7 +23,7 @@ namespace SmartFinger
     /// </summary>
     public partial class MainWindow : Window 
     {
-
+        Controller control= new Controller();
         PlateVectorCollection plateVectorCollection = new PlateVectorCollection();
         public MainWindow()
         {
@@ -113,6 +113,40 @@ namespace SmartFinger
                 plateVectorCollection.SelectedPlateVector.RemoveCurrent();
         }
 
+        private void Move_Click(object sender, RoutedEventArgs e)
+        {
+            Position nextMovePosition = new Position();
+            nextMovePosition = plateVectorCollection.SelectedPlateVector.CurrentPosition;
+            control.MovePosition(nextMovePosition.X, nextMovePosition.Y, nextMovePosition.Z, nextMovePosition.R, 20, 1, 1, 1);
+            //while (true)
+            //{
+            //    if (control.robot1.is_robot_goto_target() && nextMovePosition.ID.Substring(0, 1) == "E")
+            //    {
+
+            //        control.ClampOn();
+            //        break;
+            //    }
+            //    else if (control.robot1.is_robot_goto_target() && nextMovePosition.ID.Substring(0, 1) == "S")
+            //        break;
+            //}
+        }
+
+        private void Init_Click(object sender, RoutedEventArgs e)
+        {
+            control.RobotArmInit();
+        }
+
        
+
+        private void ClampON_Click(object sender, RoutedEventArgs e)
+        {
+            control.ClampOn();
+        }
+
+
+        private void ClampOFF_Click(object sender, RoutedEventArgs e)
+        {
+            control.ClampOff();
+        }
     }
 }
